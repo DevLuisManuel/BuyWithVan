@@ -12,11 +12,12 @@ class UserCommand extends Command
 
     protected $description = '3. Crea un comando que inserte todos los usuarios en una base de datos';
 
-    public function handle()
+    public function handle(): int
     {
         $this->alert("Inicio migracion");
         $this->getAllUser();
         $this->alert("Fin Migracion");
+        return 0;
     }
 
     private function getAllUser()
@@ -40,7 +41,7 @@ class UserCommand extends Command
                 );
             }
             $this->info("Usuarios migrados correctamente.");
-        }else{
+        } else {
             $this->error("No se encontro usuarios a migrar, verifique e intente nuevamente.");
         }
     }
