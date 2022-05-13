@@ -2,8 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Comment;
-use App\Models\Post;
+use App\Models\{Comment, Post};
 use Faker\Factory;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
@@ -14,7 +13,7 @@ class PostCommand extends Command
 
     protected $description = '4. Crea un comando que inserte todos los posts';
 
-    public function handle()
+    public function handle(): int
     {
         $comment = $this->option('comment');
         if ($comment) {
@@ -47,7 +46,7 @@ class PostCommand extends Command
         }
     }
 
-    private function createCommentPost()
+    private function createCommentPost(): int
     {
         $this->alert("Inicio Creacion de comentario");
         $this->info("5. Programar un task que corra cada hora que seleccione un post aleatoriamente y cree un comentario");
@@ -61,9 +60,13 @@ class PostCommand extends Command
         $this->comment("Data a enviar: " . json_encode($data));
         $response = Http::acceptJson()->contentType("application/json")->post(config("jsonplaceholder.URL") . "/comments", $data);
         Comment::query()->create($data); //Guardamos en nuestros registros el comentario enviado
-        $this->info("Codigo de respuesta: " . $response->status());
-
+        if($response->status() === 201){
+            $this->info("Data almacenada con exito");
+        }else{
+            $this->error("Error tratando de almacenar el comentario");
+        }
         $this->alert("Fin Creacion Comentario");
+        return 0;
     }
 
 }
