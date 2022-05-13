@@ -21,6 +21,7 @@ La siguiente parte del proceso consiste en un ejercicio práctico para poder eva
 - Si no se desea usar docker para poder correrlo, se debe de ir a la carpeta ./App/ y
   ejecutar [php artisan serve && php artisan migrate].
 - Para poder ver la vista de listado de usuarios con sus posts, seria acceder a: http://{{HOST_OWN}}
+- El proyecto creado tiene unos test de ejecucion de comandos, las cuales se encuentran en la carpeta tests, y se pueden ejecutar, haciendo php artisan test.
 
 ## Comandos
 
