@@ -1,4 +1,5 @@
 # Prueba Técnica
+
 ## Desarrollador Luis Manuel Zuñiga Moreno
 
 La siguiente parte del proceso consiste en un ejercicio práctico para poder evaluar tu coding:
@@ -17,11 +18,22 @@ La siguiente parte del proceso consiste en un ejercicio práctico para poder eva
 ## Consideraciones.
 
 - El proyecto esta desarrollado para usarse en Docker.
-- Si no se desea usar docker para poder correrlo, se debe de ir a la carpeta ./App/ y ejecutar [php artisan serve && php artisan migrate].
+- Si no se desea usar docker para poder correrlo, se debe de ir a la carpeta ./App/ y
+  ejecutar [php artisan serve && php artisan migrate].
+- Para poder ver la vista de listado de usuarios con sus posts, seria acceder a: http://{{HOST_OWN}}
+
+## Comandos
+
+| Comando         | Descripción                                                                                                                                    |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| user:command    | Comando que sirve para agregar usuarios activos de la plataforma: [https://jsonplaceholder.typicode.com/][PlGh]                                |
+| post:command    | Comando que sirve para agregar Posts activos de la plataforma: [https://jsonplaceholder.typicode.com/][PlGh]                                   |
+| post:command -C | Comando que sirve para seleccionar un post aleatorio y agregarle un comentario en la plataforma: [https://jsonplaceholder.typicode.com/][PlGh] |
 
 ## Stack Tech
 
 Para desarrollar esta prueba, se uso:
+
 - [PHP 8.1]
 - [Laravel 9]
 - [Docker]
