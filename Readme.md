@@ -22,8 +22,8 @@ La siguiente parte del proceso consiste en un ejercicio práctico para poder eva
 ## Stack Tech
 
 Para desarrollar esta prueba, se uso:
-- [PHP 8]
-- [Laravel]
+- [PHP 8.1]
+- [Laravel 9]
 - [Docker]
 - [Docker-compose]
 - [PhpStorm]
