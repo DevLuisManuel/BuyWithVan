@@ -2,6 +2,7 @@
 build:
 	@cd ./App && cp .env.example .env
 	@make initial
+	@make migrate
 
 initial:
 	#Subiendo App y Nginx
