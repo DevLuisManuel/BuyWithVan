@@ -10,3 +10,7 @@ initial:
 down-all:
 	#Parar App y Nginx
 	@docker-compose --env-file ../enviroment/.env down --remove-orphans
+
+migrate:
+	@docker-compose --env-file ../enviroment/.env exec app php artisan createDatabase
+	@docker-compose --env-file ../enviroment/.env exec app php artisan migrate
