@@ -5,12 +5,10 @@ services:
       context: .
       dockerfile: Dockerfiles/DockerfilePhp8
     tty: true
-    env_file:
-      - .env
     external_links:
       - mysql
       - redis
-    container_name: "${PROJECT_NAME}_app"
+    container_name: "${PROJECT_NAME_BUYWITHVAN}_app"
     restart: on-failure
     working_dir: /usr/src/app
     volumes:
@@ -19,12 +17,12 @@ services:
     environment:
       SESSION_DRIVER: redis
       REDIS_HOST: redis
-      APP_URL: "${NGINX_URL_FRONT}"
+      APP_URL: "${NGINX_URL_FRONT_BUYWITHVAN}"
       DB_PORT: "${MYSQL_PORT}"
-      PROJECT_NAME: "${PROJECT_NAME}"
+      PROJECT_NAME: "${PROJECT_NAME_BUYWITHVAN}"
       DB_PASSWORD: "${MYSQL_PASSWORD}"
       DB_HOST: mysql
-      DB_DATABASE: "${MYSQL_DATABASE}"
+      DB_DATABASE: "${MYSQL_DATABASE_BUYWITHVAN}"
     networks:
       - network-buywithvan
       - mysql_network-mysql
@@ -33,9 +31,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfiles/DockerfileNginx
-    env_file:
-      - .env
-    container_name: "${PROJECT_NAME}_app_nginx"
+    container_name: "${PROJECT_NAME_BUYWITHVAN}_app_nginx"
     restart: on-failure
     working_dir: /usr/src/app
     volumes:
@@ -44,13 +40,13 @@ services:
     depends_on:
       - app
     expose:
-      - "${NGINX_PORT_EXPOSE}"
+      - "${NGINX_PORT_EXPOSE_BUYWITHVAN}"
     ports:
-      - "${NGINX_PORT_EXPOSE}:80"
+      - "${NGINX_PORT_EXPOSE_BUYWITHVAN}:80"
     environment:
-      NGINX_HOST: "${NGINX_URL}"
-      VIRTUAL_HOST: "${NGINX_URL}"
-      LETSENCRYPT_HOST: "${NGINX_URL}"
+      NGINX_HOST: "${NGINX_URL_FRONT_BUYWITHVAN}"
+      VIRTUAL_HOST: "${NGINX_URL_FRONT_BUYWITHVAN}"
+      LETSENCRYPT_HOST: "${NGINX_URL_FRONT_BUYWITHVAN}"
       LETSENCRYPT_EMAIL: "${LETSENCRYPT_EMAIL}"
     networks:
       - network-buywithvan
